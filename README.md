@@ -1,2 +1,3 @@
 # Rust
-rust: crazy language!
+> Record the process of studying rust
+
