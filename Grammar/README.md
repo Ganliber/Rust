@@ -1,3 +1,4 @@
 # Grammar
 
-> Nothing else, just d
+> Nothing else, just do it.
+
