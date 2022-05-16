@@ -1,4 +1,5 @@
 
+
 fn main() {
 
 
@@ -39,12 +40,38 @@ fn main() {
     println!("");
 
 /* Test 4 */
-    println!("@4 special return value!\n")
+    println!("@4 special return value!\n");
 
     /* () is a empty tuple 
      * 1. When function with no return value : return ()
      * 2. By the statement returning '()' when its endian is ';'
      */
+
+
+
+/* Test 5 */
+    println!("@5 Owner test 1!\n");
+    let s = String::from("Hello");
+    //s.push_str("World!"); ---> error: cannot borrow as mutable
+    //println!("{}",s);
+    let mut str_changable = String::from("Hey");
+    str_changable.push_str(", Guys!");
+    println!("{}",str_changable);
+
+    println!("");
+
+    
+/* Test 6 */
+    println!("@6 Owner test 2!\n");
+
+    let s = String::from("hello");
+
+    onwer_test(s);// 由于传递所有权到函数中而该函数没有返回所有权, 
+                  // 因此s已经失效了所以再次使用s会报错
+
+    // println!("{}",s);// error:value borrowed here after move
+
+    println!("");
 }
 
 
@@ -77,3 +104,7 @@ fn clear(text: &mut String) -> () {
 //     x + y;
 // }
 
+
+fn onwer_test(temp_str: String) {
+    println!("{}",temp_str)
+}
