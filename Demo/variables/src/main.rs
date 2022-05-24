@@ -10,6 +10,7 @@ fn main() {
 
     {
         let x = x + 2;
+
         println!("The value of x in the inner scope is :{}",x);
     }
 
@@ -17,13 +18,18 @@ fn main() {
 /* Test 2 */
     println!("\n@2 statement and expression test!\n");
     let y = {
+
         let z = 3;
+
         z + 1
+
     };//{...}语句块是表达式(有返回值), 表达式不能包含分号, 否则就会变成一个语句(statement)
     println!("The value of y is: {}", y); // y == z+1 == 4
+
     //expression若不返回任何值,会隐式地返回一个'()'
+
     //let ...是一个语句(statement),不能赋值给其他值即不能作为右值
-    println!("The value of x is : {}",x);
+    println!("The value of x is : {}", x);
 
 
 /* Test 3 */
@@ -46,7 +52,6 @@ fn main() {
      * 1. When function with no return value : return ()
      * 2. By the statement returning '()' when its endian is ';'
      */
-
 
 
 /* Test 5 */
@@ -72,12 +77,16 @@ fn main() {
     // println!("{}",s);// error:value borrowed here after move
 
     println!("");
+
+
+/* Test 7 */
+    
 }
 
 
 fn funtion_1(x: i32, y: i32) -> i32 {
-    println!("The value of x+y, x-y, x*y are:{}, {}, {}",x+y,x-y,x*y);
-    x*y
+    println!("The value of x+y, x-y, x*y are: {}, {}, {}",x+y,x-y,x*y);
+    x * y
 }
 
 fn function_2(x: i32) -> i32 {
@@ -104,7 +113,8 @@ fn clear(text: &mut String) -> () {
 //     x + y;
 // }
 
-
 fn onwer_test(temp_str: String) {
-    println!("{}",temp_str)
+
+    println!("{}",temp_str);
+
 }

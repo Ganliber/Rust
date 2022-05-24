@@ -137,6 +137,12 @@ fn main() {
 
 /* 结构体测试 --- end */
 
+/* 结构体测试 --- begin */
+
+    
+
+/* 结构体测试 --- end */
+
 }
 
 
@@ -182,9 +188,11 @@ fn build_user(email:String, username:String) -> User {
 }
 
 fn struct_test() {
-    /* Initailization 
+    /* * * * * * * * * * * * * * * *
+     * Initailization  
      * 1.每个字段都要初始化
-     * 2.顺序不需要和结构体定义时一致 */
+     * 2.顺序不需要和结构体定义时一致 
+     * * * * * * * * * * * * * * * */
     let mut user1 = User {
         email: String::from("2468982667@qq.com"),
         username: String::from("Ganliber"),
@@ -194,10 +202,28 @@ fn struct_test() {
 
     user1.email = String::from("u202011061@gmail.com");
 
-    println!("{} and {}", user1.username,user1.email);
+    println!("User1 : {} and {}", user1.username,user1.email);
 
     let user2 = build_user(String::from("2468982667@qq.com"), String::from("Ganliber"));
 
-    println!("{} and {}", user2.username, user2.email);
+    println!("User2 : {} and {}", user2.username, user2.email);
+
+    let user3 = User {
+        email: String::from("another@example.com"),
+        ..user1
+    };// ..语法表明除了单独声明的属性,其余属性与实例 user1 一致
+      // ..语法必须在结构体的尾部使用
+      // 但这样对于 user1 而言, 自动赋值成员属性:
+      // 1. username(String) ---> 所有权转移,不再能够使用
+      // 2. active(bool) --->(3.同 2.)基本类型可以copy因此没有所有权转移,user1依然可以使用
+      // 3. sign_in_count(u64)
+    
+    //println!("User1'username cannot be used again,{}",user1.username);
+    println!("User1'active can still be used again,{}",user1.active);
+
+    println!("User3 : {} and {} and {} and {}",user3.username,user3.active,user3.email,user3.sign_in_count);
+    
 
 }
+
+
