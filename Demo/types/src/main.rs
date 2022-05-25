@@ -187,6 +187,13 @@ fn build_user(email:String, username:String) -> User {
       // 这一点和 TypeScript 一致
 }
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+
 fn struct_test() {
     /* * * * * * * * * * * * * * * *
      * Initailization  
@@ -222,8 +229,21 @@ fn struct_test() {
     println!("User1'active can still be used again,{}",user1.active);
 
     println!("User3 : {} and {} and {} and {}",user3.username,user3.active,user3.email,user3.sign_in_count);
-    
 
+    /* 在引入生命周期之前,要避免在结构体中使用引用类型, 如使用string而非&str */
+
+    /*
+     * 派生实现 debug trait in struct
+     */
+    let rect1 = Rectangle{
+        width:32,
+        height:44,
+    };
+    println!("Debug test for \"derive\": {:?}",rect1);
+    println!("Better format displaying for debug(especially when struct is complex and huge):\n {:#?}",rect1);
+    dbg!(&rect1);// 简单dbg
+
+    
 }
 
 
